@@ -28,6 +28,7 @@ $(document).ready(function(){
 
   // fileupload api
   var file_upload = $('#fileupload').fileupload({
+    // 檔案選取後自動上傳，預設值為 true，這裡要關掉才能改手動.
     autoUpload: false,
     url: '//jquery-file-upload.appspot.com/',
     add: function (e, data) {
