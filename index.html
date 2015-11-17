@@ -19,20 +19,29 @@
 
 <script>
 $(document).ready(function(){
+
+  // init, reset
   $('#fileupload')[0].reset();
 
+  // 準備一個空陣列, 存放檔案資訊
   var filesList = [];
+
+  // fileupload api
   var file_upload = $('#fileupload').fileupload({
     autoUpload: false,
     url: '//jquery-file-upload.appspot.com/',
     add: function (e, data) {
+      // 將 input 的 file 暫存至 filesList
       filesList.push(data.files[0]);
+      // 顯示檔名
       $('.list').append('<li style="line-height:1.5em;">' + data.files[0].name + '</li>');
     }
   });
 
+  // submit 註冊 click 事件
   $('.submit').on('click', function(e){
     e.preventDefault();
+    // fileupload api: send, 將 filesList 的檔案送至指定的 url.
     file_upload.fileupload('send', { files: filesList });
   });
 
